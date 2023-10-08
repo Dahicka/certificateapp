@@ -1,11 +1,12 @@
 import AddParticipantRow from "../../tableRow/AddParticipantRow";
 import { useTranslation } from "react-i18next";
+import styles from "../../../../style.module.css";
 
 const AddParticipantTable = (props) => {
     const { t } = useTranslation();
     
     return (
-        <table>
+        <table className={styles.tableForAddParticipant}>
             <tr>
                 <th></th>
                 <th>{t("newParticipant.name")}</th>

@@ -109,7 +109,7 @@ const EditCertificate = (props) => {
 
         <label className={styles.labelinputcertificate}>{t("certificatePage.supplier")}</label>
         <InputGroup>
-          <input {...register("supplier", { required: true })} style={{ width: "425px" }}
+          <input disabled {...register("supplier", { required: true })} style={{ width: "425px" }}
             onChange={handleChangeSetSupplier}
             value={supplierValue}
           />
@@ -188,18 +188,19 @@ const EditCertificate = (props) => {
         }}>{t("certificatePage.submit")}</Button>
 
         <label style={{
-          marginLeft: "310px"
+          marginLeft: "10px"
         }}>{t("certificatePage.assignedUsers")}</label>
         <button onClick={handleClickOpenDialogPersons} type="button"
-          className={styles.buttonaddparticipant}><img src={require("../../../resources/icons/certificate/searchicon.png")} width={"10px"} />
-          {t("certificatePage.addParticipant")}</button>
-
-        <AddParticipantTable
-          handleRemoveUserFromCertificate={handleRemoveUserFromCertificate}
-          checkedParticipants={checkedParticipants}
-        ></AddParticipantTable>
+          className={styles.buttonaddparticipant}><img src={require("../../../resources/icons/certificate/searchicon.png")}
+          width={"10px"}/>{" "}{t("certificatePage.addParticipant")}</button>
       </form>
-      <Button onClick={handleComment}
+      <AddParticipantTable
+        handleRemoveUserFromCertificate={handleRemoveUserFromCertificate}
+        checkedParticipants={checkedParticipants}
+      ></AddParticipantTable>
+
+      <Button
+      onClick={handleComment}
         type="button"
         sx={{
           color: "white",
@@ -209,6 +210,7 @@ const EditCertificate = (props) => {
           textDecoration: "none",
           textTransform: "none",
           marginLeft: "72%",
+          marginTop: "2%",
           marginBottom: "2%",
           '&:hover': {
             color: "black",

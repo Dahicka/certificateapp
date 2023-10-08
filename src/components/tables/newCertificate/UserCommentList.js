@@ -8,18 +8,18 @@ const UserCommentList = (props) => {
         ? props.listOfComments.map((data) => {
           return (
             <div style={{}}>
-              <p style={{ display: "flex", marginLeft: "25px" }}>
-                <b>{t("navigationBar.user")} </b>
+              <p style={{ display: "flex", marginBottom: 0 }}>
+                <b> {t("navigationBar.user")}</b> &nbsp;
                 {data.user}
               </p>
               <p
                 style={{
                   display: "flex",
-                  marginLeft: "25px",
+                  marginTop: 0,
                   textAlign: "justify",
                 }}
               >
-                <b>{t("certificatePage.comment")}: </b>
+                <b>{t("certificatePage.comment")}: </b> &nbsp;
                 {data.comment}
               </p>
             </div>
