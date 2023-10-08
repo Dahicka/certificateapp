@@ -1,6 +1,6 @@
 import Header from "../components/header/Header";
 import NavigationBar from "../components/navigation_bar/NavigationBar";
-import React, { useState } from "react";
+import React from "react";
 import CertificateOverviewTable from "../components/tables/certificateOverview/CertificateOverviewTable";
 import { Grid, Button } from "@mui/material";
 import { useTranslation } from "react-i18next";

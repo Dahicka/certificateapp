@@ -6,6 +6,7 @@ import CertificateOverviewPage from "./pages/CertificateOverviewPage";
 import UserContext from "./store/user-context";
 import { useState } from "react";
 
+// This is where we define all supported routes
 const router = createBrowserRouter([
   { path: "/", element: <HomePage /> },
   { path: "/certificate", element: <CertificateOverviewPage /> },

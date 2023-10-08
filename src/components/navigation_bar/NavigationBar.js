@@ -17,17 +17,17 @@ const NavigationBar = () => {
         <div className={styles.menu}>
             <Stack spacing={1} alignItems={"flex-start"}>
                 <Button sx={{
-                    borderLeft: location.pathname == '/' ? "10px solid rgb(63, 154, 201)" : null,
+                    borderLeft: location.pathname === '/' ? "10px solid rgb(63, 154, 201)" : null,
                     borderRadius: "1px"
                 }}><img src={
-                    location.pathname == '/' ? require("../../resources/icons/home/home_lightblue.png") :
+                    location.pathname === '/' ? require("../../resources/icons/home/home_lightblue.png") :
                         require("../../resources/icons/home/home_darkblue.png")} width="25px"
                     style={{ marginLeft: location.pathname == '/' ? null : "10px" }} />
                     <Link
                         to={'/'}
                         style={{
                             textTransform: "none",
-                            color: location.pathname == '/' ? "rgb(63, 154, 201)" : "rgb(39, 86, 109)",
+                            color: location.pathname === '/' ? "rgb(63, 154, 201)" : "rgb(39, 86, 109)",
                             marginLeft: "10px",
                             textDecoration: "none"
                         }}
@@ -43,11 +43,11 @@ const NavigationBar = () => {
                         width: "100%",
                         color: "rgb(39, 86, 109)",
                         borderRadius: "1px",
-                        borderLeft: location.pathname == '/certificate' ? "10px solid rgb(63, 154, 201)" : null
+                        borderLeft: location.pathname === '/certificate' ? "10px solid rgb(63, 154, 201)" : null
                     }}>
                     <img src={require("../../resources/icons/menu/menu_darkblue.png")} width="30px" style={{
                         marginRight: "7px",
-                        marginLeft: location.pathname == '/certificate' ? null : "8px"
+                        marginLeft: location.pathname === '/certificate' ? null : "8px"
                     }} />
                     {t("navigationBar.machineLearning")}
                     <span>
@@ -62,7 +62,7 @@ const NavigationBar = () => {
                             textDecoration: "none",
                             marginLeft: "45px",
                             fontSize: "0.8em",
-                            color: location.pathname == '/certificate' ? "rgb(63, 154, 201)" : "rgb(39, 86, 109)"
+                            color: location.pathname === '/certificate' ? "rgb(63, 154, 201)" : "rgb(39, 86, 109)"
                         }}>
                         {t("navigationBar.example1")}
                     </Link>
@@ -72,7 +72,7 @@ const NavigationBar = () => {
                             textDecoration: "none",
                             marginLeft: "45px",
                             fontSize: "0.8em",
-                            color: location.pathname == '/example2' ? "rgb(63, 154, 201)" : "rgb(39, 86, 109)"
+                            color: location.pathname === '/example2' ? "rgb(63, 154, 201)" : "rgb(39, 86, 109)"
                         }}>
                         {t("navigationBar.example2")}
                     </Link>

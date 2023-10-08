@@ -1,8 +1,57 @@
-# Getting Started with Create React App
+# DCCS Certificates App for internship program
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Certificates App is a webapp created in React. This App is used for managing certificates, such as creating, editing, removing certificates. You can assign participants to certificates and you can add the supplier who issued the certificate. Different users can add multiple comments to the certificates. 
 
-## Available Scripts
+On the top right corner of Header component there is language switch beetwen English and Bosnian. 
+
+## Project structure
+Components folder contains all components that are used in the app for displaying data. Components folder has multiple subfolders for better code organisation.
+
+Resources/icons folder contains all icons and images.
+  
+In pages folder I defined pages that are available in the app. 
+
+All styles for app can be found in style.module.css file.
+
+## Libraries
+
+* **React Router** - React Router is a JavaScript framework that lets us handle client and server-side routing in React applications. In certificate app react router is used for navigating to homepage, certificate overview page, new certificate page and edit certificate page. Routes are defined in App.js 
+
+```js
+const router = createBrowserRouter([
+  { path: "/", element: <HomePage /> },
+  { path: "/certificate", element: <CertificateOverviewPage /> },
+  { path: "/certificate/newcertificate", element: <NewCertificatePage /> },
+  { path: "/certificate/editCertficate/:certificateId", element: <EditCertificatePage /> },
+]);
+```
+* **React Context** - React Context is a way to manage state globally. I used react context to save active user. It is defined in user-context.js file.
+```js
+import React from "react";
+
+const UserContext = React.createContext({
+    selectedUser: "",
+    setSelectedUser: (currentUser) => { }
+})
+
+export default UserContext;
+```
+* **IndexedDB with Dexie.js** - IndexedDB is a way for you to persistently store data inside a user's browser. Dexie. js is a JavaScript library that provides a straightforward way to work with indexedDB, a browser-based storage mechanism. With Dexie.js, you can easily create, read, update, and delete data in an indexedDB database. I used indexedDB with dexie to store certificate I implemented it inside a DataBaseSettings.js file
+```js
+import Dexie from 'dexie';
+const db = new Dexie("Certficates");
+db.version(1).stores({
+  certificates: "++id,supplier,certificateType,validFrom,validTo,participants,comments",
+});
+export default db;
+```
+* **i18next** - is a very popular internationalization framework for browser or any other javascript environment. I used it for multilanguage support (English and Bosnian). Implementation is in i18n.js file.
+
+* **MUI** - is a collection of React components built to enhance and offer improvements upon Google's Material Design. I used it mostly for buttons and links.
+
+## How to run the App
+
+Before starting the app, you will need to download the project dependencies. You can do it by executing command `npm install`.
 
 In the project directory, you can run:
 
@@ -14,57 +63,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
